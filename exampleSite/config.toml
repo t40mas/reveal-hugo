@@ -35,3 +35,7 @@ history = true
 [params.reveal_hugo.templates.grey]
 background = "#424242"
 transition = "convex"
+
+[[params.reveal_hugo.mermaid]]
+startOnLoad = false
+theme = "default"
