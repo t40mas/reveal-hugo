@@ -58,7 +58,7 @@
         {{ $attrName | safeHTMLAttr }}="{{ $value }}"
       {{else}}
         {{- $attrName := cond (in $noPrefix $key) $key (delimit (slice "data" $key) "-") }}
-        {{ $attrName | safeHTMLAttr }}="{{ $value | relURL }}"
+        {{ $attrName | safeHTMLAttr }}="{{ $value | absURL }}"
       {{- end -}}
     {{- end -}}
   {{- end -}}>
