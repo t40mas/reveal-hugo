@@ -55,8 +55,8 @@
     {{- if not (in $noOutput $key) -}}
       {{- if not (in $url $key) -}}
         {{- $attrName := cond (in $noPrefix $key) $key (delimit (slice "data" $key) "-") }}
-        {{ $attrName | safeHTMLAttr }}="{{ $value }}"
-      {{else}}
+        {{ $attrName | safeHTMLAttr }}="{{ $value }}" 
+      {{- else -}}
         {{- $attrName := cond (in $noPrefix $key) $key (delimit (slice "data" $key) "-") }}
         {{ $attrName | safeHTMLAttr }}="{{ $value | absURL }}"
       {{- end -}}
