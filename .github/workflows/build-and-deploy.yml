@@ -49,8 +49,5 @@ jobs:
         run: hugo version
       - name: Remove Hugo Installer
         run: rm hugo.deb
-      - name: Get GH pages URL
-        run: ruby .github/scripts/github_pages.ru | xargs -I{} echo '::set-output name=URL::{}'
-        id: gh-pages-url
       - name: Build slides with hugo
-        run: cd exampleSite; hugo -b ${{ steps.gh-pages-url.outputs.URL }}
+        run: cd exampleSite; hugo
