@@ -18,6 +18,7 @@
 {{- end -}}
 {{- $params := . -}}
 {{- $noPrefix := slice "id" "class" -}}
+{{- $url := slice "background-image" "background-video" "background-iframe" }}
 {{- $noOutput := slice "content" "template" -}}
 {{- $template := $params.Get "template" -}}
 {{- if $template -}}
@@ -52,8 +53,13 @@
 {{- end -}}
   {{- range $key, $value := $.Params -}}
     {{- if not (in $noOutput $key) -}}
-      {{- $attrName := cond (in $noPrefix $key) $key (delimit (slice "data" $key) "-") }}
-      {{ $attrName | safeHTMLAttr }}="{{ $value }}"
+      {{- if not (in $url $key) -}}
+        {{- $attrName := cond (in $noPrefix $key) $key (delimit (slice "data" $key) "-") }}
+        {{ $attrName | safeHTMLAttr }}="{{ $value }}"
+      {{else}}
+        {{- $attrName := cond (in $noPrefix $key) $key (delimit (slice "data" $key) "-") }}
+        {{ $attrName | safeHTMLAttr }}="{{ $value | relURL }}"
+      {{- end -}}
     {{- end -}}
   {{- end -}}>
   {{ $svalue | safeHTML }}
