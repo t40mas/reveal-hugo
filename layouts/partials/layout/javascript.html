@@ -70,7 +70,7 @@
 {{ end }}
 
 {{ if $hasMermaid }}
-  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@9.1.6/dist/mermaid.min.js"></script>
   <script>
     mermaid.initialize({{ index ($.Param "reveal_hugo.mermaid") 0 }});
 
