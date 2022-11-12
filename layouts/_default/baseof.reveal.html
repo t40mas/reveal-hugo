@@ -34,6 +34,7 @@
            create layouts/partials/{section}/reveal-hugo/end.html -->
       {{- $sectionHeadPartial := printf "%s/reveal-hugo/end" (.Page.Section | default "home") -}}
       {{- if fileExists (printf "layouts/partials/%s.html" $sectionHeadPartial) -}}{{ partial $sectionHeadPartial . }}{{- end }}
+      {{ partial "footer.html" . }}
     </div>
     {{- partial "layout/javascript" . }}
     <!-- To insert markup before the closing body tag for all presentations,
